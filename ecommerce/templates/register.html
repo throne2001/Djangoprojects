@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+
+{% block content%}
+
+<h1 class="text-danger text-center ">Register here..</h1>
+<form method="POST" style="margin-bottom:80px;">
+    {% csrf_token %}
+  <div class="mb-3" >
+    <label class="form-label">Username </label>
+    <input type="Text" class="form-control" name="u" placeholder="enter the name">
+  </div>
+    <div class="mb-3">
+    <label class="form-label">password</label>
+    <input type="password" class="form-control" name="p" placeholder="enter the password">
+  </div>
+    <div class="mb-3">
+    <label class="form-label"> confirm password</label>
+    <input type="password" class="form-control" name="cp" placeholder="enter the password">
+  </div>
+    <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" class="form-control" name="e" placeholder="enter the email">
+  </div>
+<!--  <div class="mb-3">-->
+<!--    <label class="form-label">phone</label>-->
+<!--    <input type="Text" class="form-control" name="ph" placeholder="enter the phonenumder">-->
+<!--  </div>-->
+<!--  <div class="mb-3">-->
+<!--    <label class="form-label">address</label>-->
+<!--    <textarea class="form-control" name="a"></textarea>-->
+<!--  </div>-->
+    <div class="mb-3">
+    <input type="submit" class="form-control">
+  </div>
+</form>
+
+
+{% endblock %}

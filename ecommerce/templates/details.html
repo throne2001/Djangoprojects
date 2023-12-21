@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container" style="margin-bottom:100px;">
+    <div class="row">
+        <div class="col-sm-12" style="width:23rem; padding:110px;">
+                <img src="{{p.image.url}}" height="300px" width="350px">
+        </div>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+            <div class="col-sm-12" style="width:25rem; padding:110px;">
+                <h1 class="text-center" style="color:white;">{{p.name}}</h1>
+                <h2 class="text-center" style="color:white;">{{p.price}}</h2>
+                <p class="text-center" style="color:white; text-indent:20px;text-align:justify;">{{p.desc}}</p>
+                {% if user.is_superuser == False %}
+                {% if p.stock <= 0 %}
+                <h2 class="text-danger">Out of Stock</h2>
+                {% else %}
+                <a href="{% url 'cart:addtocart' p.name  %}" class="btn btn-danger" style="position:relative;left:18%;">ADD TO CART</a>
+                {% endif %}
+
+                {% else %}
+                {% if p.stock <= 0 %}
+                <h2 class="text-danger">Out of Stock</h2>
+                <a href="{% url 'admin:index'  %}" class="btn btn-primary" style="position:relative;left:18%;">ADD STOCK</a>
+                {% else %}
+                <h2 class="text-primary">Product in Stock</h2>
+                <a href="{% url 'admin:index'  %}" class="btn btn-primary" style="position:relative;left:18%;">ADD STOCK</a>
+
+                {% endif %}
+                 {% endif %}
+
+
+
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}
