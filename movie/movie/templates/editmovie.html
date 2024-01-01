@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+    <table>
+    {{form.as_table}}
+    </table>
+<!--{{form}}-->
+<input type="submit">
+</form>
+{% endblock %}
